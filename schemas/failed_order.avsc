@@ -1,0 +1,51 @@
+{
+  "type": "record",
+  "name": "FailedOrder",
+  "namespace": "com.assignment.orders",
+  "doc": "Envelope written to the Dead Letter Queue when an order can never be processed successfully.",
+  "fields": [
+    {
+      "name": "orderId",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Order id, when the payload could be decoded. Null for undecodable payloads."
+    },
+    {
+      "name": "rawPayload",
+      "type": "bytes",
+      "doc": "The exact bytes taken off the source topic, so the message can be replayed later."
+    },
+    {
+      "name": "errorType",
+      "type": "string",
+      "doc": "DeserializationError | ValidationError | RetriesExhausted"
+    },
+    {
+      "name": "errorMessage",
+      "type": "string",
+      "doc": "Human readable reason for the failure."
+    },
+    {
+      "name": "attempts",
+      "type": "int",
+      "doc": "How many processing attempts were made before giving up."
+    },
+    {
+      "name": "sourceTopic",
+      "type": "string"
+    },
+    {
+      "name": "sourcePartition",
+      "type": "int"
+    },
+    {
+      "name": "sourceOffset",
+      "type": "long"
+    },
+    {
+      "name": "failedAtMillis",
+      "type": "long",
+      "doc": "Wall-clock time of the final failure, epoch milliseconds."
+    }
+  ]
+}

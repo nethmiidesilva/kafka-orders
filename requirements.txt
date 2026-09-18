@@ -1,0 +1,7 @@
+# confluent-kafka and fastavro ship compiled extensions. The pins below are the
+# earliest releases with prebuilt cp313 (Python 3.13) wheels — older pins force
+# pip to build from source, which needs the MSVC C++ toolchain on Windows.
+confluent-kafka[avro]==2.6.1
+fastavro==1.10.0
+requests==2.32.3
+pytest==8.3.3
