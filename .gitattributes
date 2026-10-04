@@ -1,0 +1,12 @@
+# Normalise line endings so a small edit made on Windows does not show up as a
+# whole-file rewrite in the diff. Text files are stored with LF in the
+# repository regardless of the platform they were edited on.
+* text=auto eol=lf
+
+# Windows-only helper script: keep CRLF in the working tree.
+*.ps1 text eol=crlf
+
+# Never touch binary content.
+*.png binary
+*.jpg binary
+*.pdf binary
